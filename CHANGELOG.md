@@ -26,6 +26,7 @@ When adding items to the changelog try and use the template below:
 - Forwarded activity tracker changes to the Leadership perk. [002C890D]
 - Forwarded activity tracker changes to the Decontamination perk. [002CE2A0]
 - Forwarded new script properties to MQ401b. [001A9053]
+- Reapplied all papyrus script fixes to the latest versions of their original scripts.
 ### Dialogue Fixes
 - You? will no longer improperly comment on poor air quality. [00185AC8] - [Reported by underwould](https://www.starfieldpatch.dev/issues/977) -  [Fix contributed by paulbrock](https://next.nexusmods.com/profile/paulbrock/)
 - During the Unity quest, Andreja will now respond appropriately to a [Serpent's Embrace] dialogue choice if she has revealed that she is House Va'ruun. [0033282B], [0031B4D7] - [Reported by isLazy](https://www.starfieldpatch.dev/issues/973) -  [Fix contributed by isLazy](https://next.nexusmods.com/profile/isLazy/)
