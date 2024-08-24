@@ -39,19 +39,19 @@ Event OnQuestInit()
     ; Register for MQ401 hitting stage 450 or 455 so that we can start the Cora Core Crew Quest
     ; Inital fix: #369. Revised fix: #924
     ; Also used for fix #940
-    Self.RegisterForRemoteEvent(MQ401 as ScriptObject, "OnStageSet")
+    Self.RegisterForRemoteEvent(MQ401, "OnStageSet")
     ; Fix for https://www.starfieldpatch.dev/issues/545
-    Self.RegisterForRemoteEvent(MQ206A as ScriptObject, "OnStageSet")
+    Self.RegisterForRemoteEvent(MQ206A, "OnStageSet")
 EndEvent
 
 Function CheckForUpdates()
     String runningVersion = SFCP_Version_Major.GetValue() as Int+"."+SFCP_Version_Minor.GetValue() as Int+"."+SFCP_Version_Patch.GetValue() as Int
-    SFCPUtil.WriteLog("Patch initialised, version: "+runningVersion)
+    SFCP:SFCPUtil.WriteLog("Patch initialised, version: "+runningVersion)
     if (sCurrentVersion == "" || sCurrentVersion != runningVersion)
-        SFCPUtil.WriteLog("Updating Starfield Community Patch. Current version: "+runningVersion+". Last Version: "+sCurrentVersion)
+        SFCP:SFCPUtil.WriteLog("Updating Starfield Community Patch. Current version: "+runningVersion+". Last Version: "+sCurrentVersion)
         Self.ApplyMissingFixes(runningVersion)
     Else
-        SFCPUtil.WriteLog("No updates required. Current version: "+runningVersion+". Last Version: "+sCurrentVersion)
+        SFCP:SFCPUtil.WriteLog("No updates required. Current version: "+runningVersion+". Last Version: "+sCurrentVersion)
     endIf
     ; Save the version string between game loads for comparison later.
     sCurrentVersion = runningVersion
@@ -67,13 +67,13 @@ Function ApplyMissingFixes(string sNewVersion)
 
     ; Fix for https://www.starfieldpatch.dev/issues/231
     if (!b001UndiscoveredTemplesFix || (CurrentVersionGTE(0,0,1)))
-        SFCPUtil.WriteLog("Recounting undiscovered temples")
+        SFCP:SFCPUtil.WriteLog("Recounting undiscovered temples")
         StarbornTempleQuestScript templeManager = Game.GetForm(0x00214707) as StarbornTempleQuestScript
         int iDifference = templeManager.RecountUndiscoveredLocations()
         if (iDifference != 0) 
-            SFCPUtil.WriteLog("Fixed undiscovered temples. Count adjusted by "+iDifference)
+            SFCP:SFCPUtil.WriteLog("Fixed undiscovered temples. Count adjusted by "+iDifference)
         else
-            SFCPUtil.WriteLog("Undiscovered temples are correct. Fix skipped.")
+            SFCP:SFCPUtil.WriteLog("Undiscovered temples are correct. Fix skipped.")
         endif
         b001UndiscoveredTemplesFix = True
     endif
@@ -83,10 +83,10 @@ Function ApplyMissingFixes(string sNewVersion)
         Quest CREW_EliteCrewCoraCoe = Game.GetForm(0x00187BF1) as Quest
         ; (auiStageID == 450 || auiStageID == 455)
         if ((MQ401.GetStageDone(450) || MQ401.GetStageDone(455)) && iTimesEnteredUnity > 0 && !CREW_EliteCrewCoraCoe.IsRunning())
-            SFCPUtil.WriteLog("Starting Cora Coe crew quest")
+            SFCP:SFCPUtil.WriteLog("Starting Cora Coe crew quest")
             CREW_EliteCrewCoraCoe.Start()
         else 
-            SFCPUtil.WriteLog("Cora Coe crew quest does not need to be manually started. Skipping Fix.")
+            SFCP:SFCPUtil.WriteLog("Cora Coe crew quest does not need to be manually started. Skipping Fix.")
         endif
         b001CoraCoeFix = True
     endif
@@ -98,17 +98,17 @@ Function ApplyMissingFixes(string sNewVersion)
         Quest COM_Quest_SamCoe_Commitment = Game.GetForm(0x000DF7AD) as Quest
         ; Check if the player has entered Unity, skipped the main quest, and COM_Quest_SamCoe_Commitment has already started
         if (iTimesEnteredUnity > 0 && CoeEstateFrontDoorREF.IsLocked() && MQ401_SkipMQ.GetValue() as Int == 1 && COM_Quest_SamCoe_Commitment.IsRunning())
-            SFCPUtil.WriteLog("Unlocking Coe Estate doors")
+            SFCP:SFCPUtil.WriteLog("Unlocking Coe Estate doors")
             CoeEstateFrontDoorREF.Lock(False, True, True)
         else
-            SFCPUtil.WriteLog("Coe Estate doors do not require unlocking.")
+            SFCP:SFCPUtil.WriteLog("Coe Estate doors do not require unlocking.")
         endif
         b001CoeEstateFix = True
     endif
 
     ; Fix for https://www.starfieldpatch.dev/issues/669
     if (!b005HadrianFactionFix || (CurrentVersionGTE(0,0,5)))
-        SFCPUtil.WriteLog("Fixing Hadrian's faction assignments")
+        SFCP:SFCPUtil.WriteLog("Fixing Hadrian's faction assignments")
         Actor Crew_Elite_Hadrian = Game.GetFormFromFile(0x002B17C4, "Starfield.esm") as Actor
         Faction ConstellationFaction  = Game.GetFormFromFile(0x000191DC, "Starfield.esm") as Faction
         Faction CrimeFactionUC = Game.GetFormFromFile(0x0005BD93, "Starfield.esm") as Faction
@@ -121,7 +121,7 @@ Function ApplyMissingFixes(string sNewVersion)
     if (!b005ResearchTutorialFix || (CurrentVersionGTE(0,0,5)))
         Quest MQ_TutorialQuest_Misc06 = Game.GetForm(0x0000118F) as Quest
         if (MQ_TutorialQuest_Misc06.IsObjectiveDisplayed(10) && SFCP_CND_AllResearchCompleted.IsTrue(NONE, NONE))
-            SFCPUtil.WriteLog("Shutting down research tutorial quest")
+            SFCP:SFCPUtil.WriteLog("Shutting down research tutorial quest")
             MQ_TutorialQuest_Misc06.SetStage(100)
         endif
         b005ResearchTutorialFix = true
@@ -129,8 +129,8 @@ Function ApplyMissingFixes(string sNewVersion)
 
     ; Updated fix for https://www.starfieldpatch.dev/issues/924
     if (!b012CoraCoreNewFix || (CurrentVersionGTE(0, 1, 3)))
-        SFCPUtil.WriteLog("Registered OnStageSet for MQ401 to apply Cora Coe Crew Fix")
-        Self.RegisterForRemoteEvent(MQ401 as ScriptObject, "OnStageSet")
+        SFCP:SFCPUtil.WriteLog("Registered OnStageSet for MQ401 to apply Cora Coe Crew Fix")
+        Self.RegisterForRemoteEvent(MQ401, "OnStageSet")
         b012CoraCoreNewFix = true
     endif
 
@@ -164,10 +164,10 @@ Event Quest.OnStageSet(Quest akSender, Int auiStageID, Int auiItemID)
     if (akSender == MQ401 && (auiStageID == 450 || auiStageID == 455))
         Quest CREW_EliteCrewCoraCoe = Game.GetForm(0x00187BF1) as Quest
         if (!CREW_EliteCrewCoraCoe.IsRunning() && GetTimesEnteredUnity() > 0)                
-            SFCPUtil.WriteLog("Starting Cora Coe crew quest")
+            SFCP:SFCPUtil.WriteLog("Starting Cora Coe crew quest")
             CREW_EliteCrewCoraCoe.Start()
         else
-            SFCPUtil.WriteLog("Cora Coe crew quest is already running. Fix skipped.")
+            SFCP:SFCPUtil.WriteLog("Cora Coe crew quest is already running. Fix skipped.")
         endif
     endif
 

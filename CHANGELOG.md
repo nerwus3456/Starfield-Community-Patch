@@ -7,6 +7,34 @@ When adding items to the changelog try and use the template below:
 [YYYY-MM-DD] Version 1.0.0
 - *Fix Summary* <link to issue>  - [Contributor Name](Profile URL)
 -->
+## [2024-08-24] Version 0.1.7
+### Reverted Fixes
+- Reverted the gravity fix for The Well, as this fix was working inconsistently, and was interfering with the city map for this location. [000F4ED4]
+- Reverted fixes to rank 4 of the Missile Weapon Systems perk, as these have been corrected officially by Bethesda. [002C5558]
+- Reverted change to the Concealment perk, as it is now identical-to-master after forwarding changes from the latest update. [002C555E]
+- Reverted fix for the Sustenance feature not working in variant universes, as this has been fixed officially by Bethesda. [002EEA4D]
+### Forwarded Changes
+- Forwarded an official fix for the Sustenance feature to each drink item. [0001BBAA], [0001BBAB], [0001BBAC], [0003614B], [0003614C], [00139E43], [00139E44], [00139E45], [001DFCB4], [001EBE9E], [001FF69A], [001FF69C], [001FF69E], [001FF6A0], [0020675D], [0020675E], [00243FA5], [00249C0D], [00249C0E], [00249C0F], [00249C10], [00249C11], [00249C1A], [00249C1B], [00249C1E], [00249C25], [00249C26], [00249C27], [00249C28], [00249C2A], [00249C2B], [00249C2C], [00249C3A], [00249C49], [00249C51], [0029B00E], [0029B03F], [0029B041], [0029B042], [0029B04D], [0029B04E], [0029B04F], [002C7202], [002C7203], [002C7204], [002C7205], [002C7206], [002C7207], [002C7208], [002C7209], [002C720D], [002C7210], [002C7211], [002C7214], [002C7215], [002C7217], [002C7219], [003BF792], [003BF793]
+- Forwarded actor property changes to some Starborn characters you can meet in a specific universe. [0017F7A8], [0017F7A9], [0017F7AA], [0017F7AB], [0017F7AC], [0017F7AE]
+- Forwarded activity tracker changes to the Automated Weapon Systems perk. [0027B9ED]
+- Forwarded activity tracker changes to the Cellular Regeneration perk. [0028AE14]
+- Forwarded activity tracker changes to the Shield Systems perk. [002C2C59]
+- Forwarded activity tracker changes to the EM Weapon Systems perk. [002C53B2]
+- Forwarded activity tracker changes to the Targeting Control Systems perk. [002C5559]
+- Forwarded activity tracker changes to the Leadership perk. [002C890D]
+- Forwarded activity tracker changes to the Decontamination perk. [002CE2A0]
+- Forwarded new script properties to MQ401b. [001A9053]
+- Reapplied all papyrus script fixes to the latest versions of their original scripts.
+### Dialogue Fixes
+- You? will no longer improperly comment on poor air quality. [00185AC8] - [Reported by underwould](https://www.starfieldpatch.dev/issues/977) -  [Fix contributed by paulbrock](https://next.nexusmods.com/profile/paulbrock/)
+- During the Unity quest, Andreja will now respond appropriately to a [Serpent's Embrace] dialogue choice if she has revealed that she is House Va'ruun. [0033282B], [0031B4D7] - [Reported by isLazy](https://www.starfieldpatch.dev/issues/973) -  [Fix contributed by isLazy](https://next.nexusmods.com/profile/isLazy/)
+- Cora will now approach Barrett to begin a certain conversation in the lodge, rather than starting it while the two of them are on potentially other sides of the building. [0033E8F1], [0033EC2E] - [Reported by pabelik](https://www.starfieldpatch.dev/issues/702)
+- In the Executive Level quest, Sarah Morgan's dialogue lines with Alexis will now play correctly, rather than being silent. [00009ED9]
+### Ship Fixes
+- The right-side thrusters on the NG-20 Fore Landing gear will now fire correctly [meshes\effects\shipsfx\modules\smod_lander_nova_ng-20_b_modfx.nif] - [Reported by jsavga](https://www.starfieldpatch.dev/issues/1066) -  [Fix contributed by GrizBane](https://next.nexusmods.com/profile/GrizBane)
+- Corrected a conflicting ShipModuleVariant value in the HopeTech 2x2 Battle Stations hab, which was preventing the HopeTech 2x2 AIO hab from appearing in the ship builder menu. [003EC621] - [Reported by Dark-Thoughts](https://www.starfieldpatch.dev/issues/1094)
+- Disabled audio occlusion primitives from the Stroud 2x1 Living Quarters hab, in order to correct issues with muffled audio in ships which have this hab. This brings it in line with every other ship module in the game. [00218099], [0021809A], [0021809C], [0021809D], [0021809E], [0021809F]
+
 ## [2024-06-17] Version 0.1.6
 ### Reverted Fixes
 - Removed mannequin scaling fix, as this has been officially fixed by Bethesda. [001EE4D6]

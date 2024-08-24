@@ -3,6 +3,7 @@
 *.esp
 *.esl
 *.pex
+*.ba2
 Strings/
 
 # Reallow spriggit folders with mod names in them
