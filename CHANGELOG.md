@@ -7,6 +7,11 @@ When adding items to the changelog try and use the template below:
 [YYYY-MM-DD] Version 1.0.0
 - *Fix Summary* <link to issue>  - [Contributor Name](Profile URL)
 -->
+## [2024-08-24] Version 0.1.7
+### Ship Fixes
+- The right-side thrusters on the NG-20 Fore Landing gear will now fire correctly [meshes\effects\shipfx\modules\smod_lander_nova_ng-20_b_modfx.nif] - [Reported by jsavga](https://www.starfieldpatch.dev/issues/1066) -  [Fix contributed by GrizBane](https://next.nexusmods.com/profile/GrizBane)
+
+
 ## [2024-06-17] Version 0.1.6
 ### Reverted Fixes
 - Removed mannequin scaling fix, as this has been officially fixed by Bethesda. [001EE4D6]
