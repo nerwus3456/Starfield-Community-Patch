@@ -8,8 +8,6 @@ When adding items to the changelog try and use the template below:
 - *Fix Summary* <link to issue>  - [Contributor Name](Profile URL)
 -->
 ## [2024-08-24] Version 0.1.7
-### Ship Fixes
-- The right-side thrusters on the NG-20 Fore Landing gear will now fire correctly [meshes\effects\shipfx\modules\smod_lander_nova_ng-20_b_modfx.nif] - [Reported by jsavga](https://www.starfieldpatch.dev/issues/1066) -  [Fix contributed by GrizBane](https://next.nexusmods.com/profile/GrizBane)
 ### Reverted Fixes
 - Reverted the gravity fix for The Well, as this fix was working inconsistently, and was interfering with the city map for this location. [000F4ED4]
 - Reverted fixes to rank 4 of the Missile Weapon Systems perk, as these have been corrected officially by Bethesda. [002C5558]
