@@ -31,7 +31,7 @@ When adding items to the changelog try and use the template below:
 - Cora will now approach Barrett to begin a certain conversation in the lodge, rather than starting it while the two of them are on potentially other sides of the building. [0033E8F1], [0033EC2E] - [Reported by pabelik](https://www.starfieldpatch.dev/issues/702)
 - In the Executive Level quest, Sarah Morgan's dialogue lines with Alexis will now play correctly, rather than being silent. [00009ED9]
 ### Ship Fixes
-- The right-side thrusters on the NG-20 Fore Landing gear will now fire correctly [meshes\effects\shipfx\modules\smod_lander_nova_ng-20_b_modfx.nif] - [Reported by jsavga](https://www.starfieldpatch.dev/issues/1066) -  [Fix contributed by GrizBane](https://next.nexusmods.com/profile/GrizBane)
+- The right-side thrusters on the NG-20 Fore Landing gear will now fire correctly [meshes\effects\shipsfx\modules\smod_lander_nova_ng-20_b_modfx.nif] - [Reported by jsavga](https://www.starfieldpatch.dev/issues/1066) -  [Fix contributed by GrizBane](https://next.nexusmods.com/profile/GrizBane)
 - Corrected a conflicting ShipModuleVariant value in the HopeTech 2x2 Battle Stations hab, which was preventing the HopeTech 2x2 AIO hab from appearing in the ship builder menu. [003EC621] - [Reported by Dark-Thoughts](https://www.starfieldpatch.dev/issues/1094)
 - Disabled audio occlusion primitives from the Stroud 2x1 Living Quarters hab, in order to correct issues with muffled audio in ships which have this hab. This brings it in line with every other ship module in the game. [00218099], [0021809A], [0021809C], [0021809D], [0021809E], [0021809F]
 
