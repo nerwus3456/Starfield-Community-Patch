@@ -6,8 +6,8 @@ rem CapricaCompileCommunityPatch.cmd
 rem Extract Caprica.exe alongside this file 
 rem Ensure the import (where the vanilla source files are) and output (the end result destination) are correct. 
 
-set IMPORT=C:\Games\Steam\steamapps\common\Starfield\Data\Scripts\Source\Base
-set OUTPUT=C:\Games\Steam\steamapps\common\Starfield\Data\Scripts
+set IMPORT=C:\Games\Steam\steamapps\common\Starfield\Data\Scripts\Source
+set OUTPUT=C:\Users\MikeW\Documents\GitHub\Starfield-Community-Patch\Scripts
 set BASEPATH=%cd%
 
 :START
