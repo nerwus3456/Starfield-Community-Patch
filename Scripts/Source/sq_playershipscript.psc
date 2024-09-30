@@ -368,7 +368,11 @@ Function LoadVascoExterior()
 			endif
 
 			;if there is no marker to move vasco to and he is the active companion, move him to the player instead if the player is not in space
-			if !moveToRef && !playerRef.IsInSpace() && (VascoRef.IsInFaction(CurrentFollowerFaction) || MQ101VascoQuestFollower.GetValueInt() == 1)
+			; SFCP Fix https://www.starfieldpatch.dev/issues/1131
+			; We also need to check that the player is not currently in The Unity before we teleport Vasco.
+			;if !moveToRef && !playerRef.IsInSpace() && (VascoRef.IsInFaction(CurrentFollowerFaction) || MQ101VascoQuestFollower.GetValueInt() == 1)
+			if !moveToRef && !playerRef.IsInSpace() && currentLoc != Game.GetForm(0x214C7E) As Location && (VascoRef.IsInFaction(CurrentFollowerFaction) || MQ101VascoQuestFollower.GetValueInt() == 1)
+			; End Fix
 				moveToRef = playerRef
 			endif
 		endif

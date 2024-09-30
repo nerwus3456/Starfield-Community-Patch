@@ -308,8 +308,13 @@ EndIf
 ;setup the Lodge basement door
 MQ204BasementDoorEnableMarker.Disable()
 
+; SFCP Fix https://www.starfieldpatch.dev/issues/1126
+; Skip this step if the player chose the Starborn ending for MQ201
+if !MQ201.GetStageDone(2000)
 ;setup Eye state
 MQ204EyeAttackEnableMarker.EnableNoWait()
+endif
+; End Fix
 
 ;disable the spaceport ship if the spaceport marker is used by another quest
 If FFNewAtlantis05.IsRunning() || CF05.IsRunning()
@@ -2755,3 +2760,8 @@ Quest Property SQ_GuardShips00 Auto Const Mandatory
 Quest Property SQ_GuardShips01 Auto Const Mandatory
 
 ObjectReference Property NewAtlantisMapMarkerSpaceport Auto Const Mandatory
+
+; SFCP Fix https://www.starfieldpatch.dev/issues/1126
+; Make this fragment aware of MQ201, so we can check it before enabling The Eye's attack marker.
+Quest Property MQ201 Auto Const Mandatory
+; End Fix

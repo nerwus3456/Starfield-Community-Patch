@@ -9,10 +9,14 @@ GlobalVariable Property SFCP_Version_Patch Auto Const
 { Patch SFCP Version }
 ConditionForm Property SFCP_CND_AllResearchCompleted Auto Const
 { Has the player completed all current research projects }
+ObjectReference Property MQ204EyeAttackEnableMarker Auto Const Mandatory
+{ Marker for post-attack state on The Eye }
 Quest Property MQ401 Auto
 { New Game Plus Standard Handler }
 Quest Property MQ206A Auto
 { Missed Beyond Measure }
+Quest Property MQ201 Auto
+{ Further Into the Unknown }
 
 ;-- Variables  --------------------------------------
 string sCurrentVersion = ""
@@ -29,7 +33,8 @@ bool b005ResearchTutorialFix = false
 ; https://www.starfieldpatch.dev/issues/725
 bool b012CoraCoreNewFix = false
 ; https://www.starfieldpatch.dev/issues/924
-
+bool b013NGPlusEyeAttackFix = false
+; https://www.starfieldpatch.dev/issues/1126
 ;-- Functions ---------------------------------------
 
 Event OnQuestInit()
@@ -133,6 +138,16 @@ Function ApplyMissingFixes(string sNewVersion)
         Self.RegisterForRemoteEvent(MQ401, "OnStageSet")
         b012CoraCoreNewFix = true
     endif
+
+	; Fix for https://www.starfieldpatch.dev/issues/1126
+	; If the player loads a save where Further Into the Unknown has already reached the Starborn ending, clean up The Eye ourselves. Otherwise, the fixed MQ204 fragment script will prevent the issue in the first place.
+	if (!b013NGPlusEyeAttackFix || (CurrentVersionGTE(0, 1, 8)))
+		if MQ201.GetStageDone(2000)
+			MQ204EyeAttackEnableMarker.DisableNoWait()
+		endif
+		b013NGPlusEyeAttackFix = true
+	endif
+
 
 EndFunction
 
