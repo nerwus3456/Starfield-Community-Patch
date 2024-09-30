@@ -7,7 +7,7 @@ When adding items to the changelog try and use the template below:
 [YYYY-MM-DD] Version 1.0.0
 - *Fix Summary* <link to issue>  - [Contributor Name](Profile URL)
 -->
-## [2024-09=30] Version 1.0.0
+## [2024-09-30] Version 1.0.0
 ### Reverted Fixes
 - Reverted the mission type fix for 'A Break At Dawn', as this has been corrected officially. [00091CF5]
 - Partially reverted the fix for a Serpent's Embrace dialogue option with Andreja during the Unity quest, as this has been halfway fixed by Bethesda. [0033282B]
